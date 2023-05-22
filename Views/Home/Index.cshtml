@@ -1,0 +1,33 @@
+﻿@model IEnumerable<E_Mart.Models.Groccery>
+
+@{
+
+}
+<h2>Product Management</h2>
+
+<div>
+    <h3>Product List</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var groccery in Model)
+            {
+                <tr>
+                    <td>@groccery.Name</td>
+                    <td>@groccery.Price</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = groccery.Id })" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("Delete", new { id = groccery.Id })" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

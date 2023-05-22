@@ -1,0 +1,54 @@
+﻿@model IEnumerable<E_Mart.Models.Groccery>
+
+<h2>Groccery Management</h2>
+
+<div>
+    <h3>Groccery List</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Groccery Name</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var groccery in Model)
+            {
+                <tr>
+                    <td>@groccery.Name</td>
+                    <td>@groccery.Price</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = groccery.Id })" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("Delete", new { id = groccery.Id })" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <h3>Groccery Form</h3>
+    <button id="addButton" class="btn btn-primary">Add Groccery</button>
+    <form id="grocceryForm" asp-action="Create" method="post" style="display: none;">
+        <div class="form-group">
+            <label for="Name">Groccery Name</label>
+            <input type="text" class="form-control" id="Name" name="Name" required />
+        </div>
+        <div class="form-group">
+            <label for="Price">Price</label>
+            <input type="number" class="form-control" id="Price" name="Price" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+
+@section scripts {
+    <script>
+        document.getElementById('addButton').addEventListener('click', function () {
+            var form = document.getElementById('grocceryForm');
+            form.style.display = 'block';
+        });
+    </script>
+}

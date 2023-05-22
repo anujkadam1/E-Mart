@@ -1,0 +1,10 @@
+﻿@model E_Mart.Models.Groccery
+
+<h2>Delete Product</h2>
+
+<p>Are you sure you want to delete the product @Model.Name?</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
